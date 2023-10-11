@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Form Validation</title>
+    <script src="text/javascript"></script>
+    <script>
+        $(document).ready(function () {
+            var states = ["Gujarat", "Maharashtra", "Karnataka"];
+            $("#state").autocomplete({
+                source: states
+            });
+
+            $("#save").click(function () {
+                var name = $("#name").val();
+                var email = $("#email").val();
+                var phone = $("#phone").val();
+                var gender = $("input[name='gender']:checked").val();
+                var heardAbout = [];
+                $("input[name='heardAbout']:checked").each(function () {
+                    heardAbout.push($(this).val());
+                });
+                var city = $("#city").val();
+                var state = $("#state").val();
+
+                if (name == "" || email == "" || phone == "" || gender == undefined || heardAbout.length == 0 || city == "" || state == "") {
+                    alert("Please fill all the fields correctly.");
+                } else {
+                    alert("Form submitted successfully.");
+                }
+            });
+        });
+    </script>
+    <style>
+         .tb
+        {
+            font-style: oblique;
+            background-origin: padding-box;
+            color:black;
+        }
+        
+    </style>
+</head>
+
+<body class="tb" style="border: 10px ; padding: 25px; margin: 25px; height: 10cm; width: 15cm; border-style:double; color: brown;">
+    <form>
+        <table align="center">
+            <h1 align = "Center">Application Form</h1>
+            <tr>
+                <td><label for="name">Name:</label><br></td>
+                <td> <input type="text" id="name" name="name" pattern="[a-zA-Z ]+" required><br></td>
+            </tr>
+            <tr>
+                <td><label for="email">Email:</label><br></td>
+                <td><input type="email" id="email" name="email" required><br></td>
+            </tr>
+            <tr>
+                <td><label for="phone">Phone:</label><br></td>
+                <td> <input type="number" id="phone" name="phone" required><br></td>
+            </tr>
+            <tr>
+                <td><label for="gender">Gender:</label><br></td>
+                <td><input type="radio" id="male" name="gender" value="Male">
+                    <label for="male">Male</label><br>
+                    <input type="radio" id="female" name="gender" value="Female">
+                    <label for="female">Female</label><br>
+                    <input type="radio" id="other" name="gender" value="other">
+                    <label for="other">Others</label> <br>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="hear-about-us">How did you hear about us?</label></td>
+                <td> <input type="checkbox" id="hear-about-us-linkedin" name="hear-about-us[]" value="LinkedIn">
+                    <label for="hear-about-us-linkedin">LinkedIn</label>
+                    <input type="checkbox" id="hear-about-us-friends" name="hear-about-us[]" value="Friends">
+                    <label for="hear-about-us-friends">Friends</label>
+                    <input type="checkbox" id="hear-about-us-job-portal" name="hear-about-us[]" value="Job Portal">
+                    <label for="hear-about-us-job-portal">Job Portal</label>
+                    <input type="checkbox" id="hear-about-us-other" name="hear-about-us[]" value="Other">
+                    <label for="hear-about-us-other">Other</label> <br> <br>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="city">City:</label></td>
+                <td><select id="city" name="city">
+                        <option value="">Select city</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Pune">Pune</option>
+                        <option value="Ahmedabad">Ahmedabad</option>
+                    </select> <br> <br></td>
+            </tr>
+            <tr>
+                <td> <label for="state">State:</label></td>
+                <td><input type="text" id="state" name="state" list="states">
+                    <datalist id="states">
+                        <option value="Gujarat"></option>
+                        <option value="Maharashtra"></option>
+                        <option value="Karnataka"></option>
+                    </datalist><br> <br>
+
+                    <input type="submit" value="Save">
+                </td>
+            </tr>
+        </table>
+
+    </form>
+
+</body>
+
+</html>
